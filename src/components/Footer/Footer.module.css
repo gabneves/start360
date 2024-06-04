@@ -1,5 +1,8 @@
 .footer {
     padding: 1rem 1.5rem;
+    bottom: 0;
+    left: 0;
+    width: 100%;
 }
 
 .footerContent {
@@ -15,6 +18,7 @@
     max-width: 100%;
     font-family: "Poppins", sans-serif !important;
     margin-bottom: 1rem;
+    font-size: 16px;
 }
 
 .footerLinks {
@@ -34,6 +38,7 @@
     margin: 0 10px;
     font-family: "Poppins", sans-serif !important;
     transition: color 0.3s;
+    font-size: 12px;
 }
 
 .footer a:hover {

@@ -24,32 +24,32 @@ export default function Footer() {
                         <Image
                             src="/assets/icons/insta.svg"
                             alt="Instagram"
-                            width={24}
-                            height={24}
+                            width={18}
+                            height={18}
                         />
                     </Link>
                     <Link href="/">
                         <Image
                             src="/assets/icons/facebook.svg"
                             alt="Facebook"
-                            width={24}
-                            height={24}
+                            width={18}
+                            height={18}
                         />
                     </Link>
                     <Link href="/">
                         <Image
                             src="/assets/icons/email.svg"
                             alt="Email"
-                            width={24}
-                            height={24}
+                            width={18}
+                            height={18}
                         />
                     </Link>
                     <Link href="/">
                         <Image
                             src="/assets/icons/github.svg"
                             alt="GitHub"
-                            width={24}
-                            height={24}
+                            width={18}
+                            height={18}
                         />
                     </Link>
                 </div>

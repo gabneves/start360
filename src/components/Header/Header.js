@@ -10,7 +10,7 @@ export default function Header() {
                 <ul className={styles.navLinks}>
                     <li><Link href="/">início</Link></li>
                     <li><Link href="/projeto">projeto</Link></li>
-                    <li><Link href="#">equipe</Link></li>
+                    <li><Link href="/equipe">equipe</Link></li>
                     <li><Link href="#">contato</Link></li>
                 </ul>
                 <div className={styles.flag}>
