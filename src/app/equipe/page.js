@@ -32,7 +32,7 @@ const membros = [
     {
         id: 4,
         nome: "Membro 4",
-        imagem: "/assets/members/Luiz.svg",
+        imagem: "/assets/members/luiz.svg",
         github: "https://github.com/luizPrendin",
         email: "luizprendinfelipe@gmail.com",
         linkedin: "https://www.linkedin.com/in/luizprendin/?originalSubdomain=br",
