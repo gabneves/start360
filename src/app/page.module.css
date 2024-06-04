@@ -4,6 +4,10 @@
     margin-bottom: 50px;
 }
 
+.gridContainerText{
+    padding-right: 50px;
+}
+
 .title {
     color: #FD3F69;
     font-family: "Poppins", sans-serif !important;
@@ -149,5 +153,9 @@
     .gridContainerLeft {
         flex-direction: column;
         margin-top: 50px;
+    }
+
+    .gridContainerText{
+        padding-right: 0px;
     }
 }

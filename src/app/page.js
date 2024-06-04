@@ -1,3 +1,6 @@
+"use client"
+
+import { useState } from 'react';
 import Image from "next/image";
 import styles from "./page.module.css";
 import Header from "../components/Header/Header.js";
@@ -15,6 +18,45 @@ import {
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 export default function Home() {
+  const [formData, setFormData] = useState({
+    nome: "",
+    email: ""
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    // Verificar se os campos estão preenchidos
+    if (formData.nome === "" || formData.email === "") {
+      alert("Por favor, preencha todos os campos.");
+      return;
+    }
+
+    try {
+      const response = await fetch("https://start360lp-default-rtdb.firebaseio.com/users.json", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formData)
+      });
+
+      if (response.ok) {
+        console.log("Dados enviados com sucesso!");
+      } else {
+        console.error("Erro ao enviar dados para o banco de dados.");
+      }
+    } catch (error) {
+      console.error("Erro ao enviar dados para o banco de dados:", error);
+    }
+  };
   return (
     <>
       <Header />
@@ -28,7 +70,7 @@ export default function Home() {
             layout="responsive"
           />
         </Grid>
-        <Grid item xs={12} md={6} sx={{ mt: 14 }} paddingRight={20}>
+        <Grid item xs={12} md={6} sx={{ mt: 14 }} className={styles.gridContainerText}>
           <Typography variant="h3" gutterBottom className={styles.title}>
             O que é a Start 360?
           </Typography>
@@ -48,7 +90,7 @@ export default function Home() {
           </div>
         </Grid>
       </Grid>
-      
+
       <Container className={styles.container}>
         <Grid container spacing={0} className={styles.gridContainerLeft}>
           <Grid item xs={12} md={6}>
@@ -289,24 +331,40 @@ export default function Home() {
             <Typography variant="h5" gutterBottom className={styles.titleLeft}>
               PITCH
             </Typography>
-            <iframe width="100%" height="720" src="https://www.youtube.com/embed/jo3ZbnvePhI?si=WEinzAX0eooxmEzI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe width="100%" height="600" src="https://www.youtube.com/embed/yBU-WjdzJzc?si=716imXQqBqouVAfC" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
           </Grid>
         </Grid>
 
-        <Grid container spacing={2} justifyContent="center">
+        <Grid container spacing={2} justifyContent="center" component="form" onSubmit={handleSubmit}>
           <Grid item xs={12} md={6}>
             <Grid container spacing={2} className={styles.gridContainerForm}>
               <Grid item xs={12} md={6}>
-                <Input type="text" fullWidth placeholder="nome" className={styles.input} />
+                <Input
+                  type="text"
+                  fullWidth
+                  placeholder="nome"
+                  name="nome"
+                  value={formData.nome}
+                  onChange={handleChange}
+                  className={styles.input}
+                />
               </Grid>
               <Grid item xs={12} md={6}>
-                <Input type="email" fullWidth placeholder="e-mail" className={styles.input} />
+                <Input
+                  type="email"
+                  fullWidth
+                  placeholder="e-mail"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  className={styles.input}
+                />
               </Grid>
             </Grid>
           </Grid>
           <Grid item xs={12} md={8}>
             <div className={styles.buttonContainerForm}>
-              <Button className={styles.button} variant="contained">
+              <Button type="submit" className={styles.button} variant="contained">
                 fique por dentro
               </Button>
             </div>
