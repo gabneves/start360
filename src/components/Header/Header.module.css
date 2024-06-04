@@ -1,0 +1,58 @@
+.header {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    padding: 0 20px; 
+    width: 100%;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.navLinks {
+    list-style: none;
+    display: flex;
+    gap: 30px; 
+    margin: 0;
+}
+
+.navLinks li a {
+    text-decoration: none;
+    color: #1E1E1E;
+    font-family: Poppins, sans-serif;
+    font-size: 12px;
+    font-weight: 275;
+    line-height: 24px;
+    text-align: left;
+}
+
+.flag {
+    margin-right: 10px; 
+}
+
+.icon{
+    margin-right: 10px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+}
+
+@media (max-width: 768px) {
+    .navLinks {
+        gap: 15px; /* Reduzir gap em telas menores */
+    }
+
+    .flag {
+        margin-right: 5px; /* Reduzir margem em telas menores */
+    }
+
+    .logo {
+        width: 120px; /* Reduzir tamanho da logo em telas menores */
+    }
+}
