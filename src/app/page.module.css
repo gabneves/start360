@@ -1,0 +1,153 @@
+.gridContainer,
+.gridContainerLeft {
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+.title {
+    color: #FD3F69;
+    font-family: "Poppins", sans-serif !important;
+    font-weight: 600;
+    text-align: right;
+}
+
+.text {
+    color: #393939;
+    font-family: "Poppins", sans-serif !important;
+    font-weight: 300;
+    opacity: 0.85;
+    text-align: right;
+}
+
+.buttonContainer {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+
+.button {
+    background-color: #FD3F69;
+    font-family: "Poppins", sans-serif !important;
+    font-weight: 400;
+    text-transform: none;
+    border-radius: 50px;
+    width: 250px;
+    height: 45px;
+}
+
+.button:hover {
+    background-color: #FD3F69;
+}
+
+.titleLeft {
+    color: #FD3F69;
+    font-family: "Poppins", sans-serif !important;
+    font-weight: 600;
+    text-align: left;
+}
+
+.textLeft {
+    color: #393939;
+    font-family: "Poppins", sans-serif !important;
+    font-weight: 300;
+    opacity: 0.85;
+    text-align: left;
+}
+
+.buttonContainerLeft {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 20px;
+}
+
+.span {
+    color: #FD3F69;
+    font-family: "Poppins", sans-serif !important;
+    font-weight: 700;
+    text-align: center;
+}
+
+.gridContainerImage {
+    justify-content: space-evenly;
+}
+
+.accordion {
+    border-color: #ADADAD;
+    margin-bottom: 10px;
+}
+
+.accordionSummaryIcon {
+    color: #FD3F69;
+}
+
+.accordionSummaryContenText,
+.accordionDetailsText {
+    color: #9A9A9A;
+}
+
+.gridContainerForm {
+    justify-content: center; /* Certifica-se de centralizar os itens */
+  }
+
+.input {
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 0 10px;
+    font-size: 16px;
+    font-weight: 300;
+    color: #9A9A9A;
+}
+
+.input::before {
+    border-bottom: none;
+    pointer-events: none;
+    transition: none;
+    -webkit-transition: none;
+    content: none
+}
+
+.input::after {
+    border-bottom: none;
+    pointer-events: none;
+    transition: none;
+    -webkit-transition: none;
+}
+
+.buttonContainerForm {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+@media screen and (max-width: 900px) {
+
+    .text,
+    .title {
+        text-align: center;
+    }
+
+    .buttonContainer {
+        justify-content: center;
+    }
+
+    .gridContainer {
+        flex-direction: column-reverse;
+        margin-top: 50px;
+    }
+
+    .textLeft,
+    .titleLeft {
+        text-align: center;
+    }
+
+    .buttonContainerLeft {
+        justify-content: center;
+    }
+
+    .gridContainerLeft {
+        flex-direction: column;
+        margin-top: 50px;
+    }
+}
