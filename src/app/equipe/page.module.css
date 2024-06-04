@@ -1,0 +1,49 @@
+.container {
+    padding: 20px;
+    text-align: left;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+.title {
+    color: #FD3F69;
+    font-family: "Poppins", sans-serif !important;
+    font-weight: 600;
+    text-align: left;
+}
+
+.text {
+    color: #393939;
+    font-family: "Poppins", sans-serif !important;
+    font-weight: 300;
+    opacity: 0.85;
+    text-align: left;
+}
+
+.memberCard {
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.cardContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.iconBackground {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    background-color: #fff;
+    margin-top: 10px;
+    gap: 20px;
+}
+
+.icon {
+    width: 30px;
+    height: 30px;
+}
