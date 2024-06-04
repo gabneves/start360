@@ -48,6 +48,7 @@ export default function Home() {
           </div>
         </Grid>
       </Grid>
+      
       <Container className={styles.container}>
         <Grid container spacing={0} className={styles.gridContainerLeft}>
           <Grid item xs={12} md={6}>
