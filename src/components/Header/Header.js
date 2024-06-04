@@ -8,8 +8,8 @@ export default function Header() {
         <header className={styles.header}>
             <nav className={styles.nav}>
                 <ul className={styles.navLinks}>
-                    <li><Link href="#">início</Link></li>
-                    <li><Link href="#">projeto</Link></li>
+                    <li><Link href="/">início</Link></li>
+                    <li><Link href="/projeto">projeto</Link></li>
                     <li><Link href="#">equipe</Link></li>
                     <li><Link href="#">contato</Link></li>
                 </ul>
