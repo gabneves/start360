@@ -12,9 +12,6 @@ import {
 
 export default function Contato() {
     return (
-        <>
-            <Header />
-
             <Container className={styles.container} maxWidth="">
                 <Grid container spacing={10} className={styles.gridContainer}>
                     <Grid item xs={12} md={5}>
@@ -49,8 +46,5 @@ export default function Contato() {
                     </Grid>
                 </Grid>
             </Container>
-
-            <Footer />
-        </>
     );
 }

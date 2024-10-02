@@ -49,8 +49,6 @@ const membros = [
 
 export default function Equipe() {
     return (
-        <>
-            <Header />
             <Container className={styles.container} maxWidth="lg">
                 <Typography variant="h3" align="left" gutterBottom className={styles.title}>
                     A equipe
@@ -79,7 +77,5 @@ export default function Equipe() {
                     ))}
                 </Grid>
             </Container>
-            <Footer />
-        </>
     );
 }

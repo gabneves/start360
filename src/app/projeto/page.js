@@ -11,9 +11,6 @@ import {
 
 export default function Projeto() {
     return (
-        <>
-            <Header />
-
             <Container className={styles.container} maxWidth="">
                 <Grid container spacing={0} className={styles.gridContainerLeft}>
                     <Grid item xs={12} md={5} sx={{ mt: 6 }}>
@@ -40,8 +37,5 @@ export default function Projeto() {
                     </Grid>
                 </Grid>
             </Container>
-
-            <Footer />
-        </>
     );
 }
