@@ -104,8 +104,9 @@
 }
 
 .table th {
-    background-color: #f4f4f4;
+    background-color: #fd3f68b9;
     font-weight: 600;
+    color: white;
 }
 
 .table tr:nth-child(even) {
