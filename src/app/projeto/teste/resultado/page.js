@@ -11,6 +11,17 @@ export default function Resultado() {
     // Parseia o JSON de resposta para exibir como tabela
     const jsonResponse = JSON.parse(decodeURIComponent(resposta));
 
+    // Função para formatar os valores como R$
+    const formatCurrency = (value) => {
+        return new Intl.NumberFormat('pt-BR', {
+            style: 'currency',
+            currency: 'BRL'
+        }).format(value);
+    };
+
+    // Cálculo do valor total
+    const totalOrcamento = formatCurrency(jsonResponse.orcamento.total_orcamento);
+
     const handleDownload = () => {
         console.log("Download do planejamento");
     };
@@ -21,19 +32,6 @@ export default function Resultado() {
 
     const handleAjustar = () => {
         console.log("Ajustando planejamento");
-    };
-
-    // Função para renderizar o orçamento como tabela
-    const renderTable = (obj) => {
-        return Object.keys(obj).map((key) => {
-            const value = obj[key];
-            return (
-                <tr key={key}>
-                    <td><strong>{key}:</strong></td>
-                    <td>{typeof value === 'object' ? renderTable(value) : value.toString()}</td>
-                </tr>
-            );
-        });
     };
 
     return (
@@ -59,14 +57,84 @@ export default function Resultado() {
                     readOnly
                     className={styles.input}
                 />
+
                 <div className={styles.tableContainer}>
                     <table className={styles.table}>
                         <tbody>
-                            {renderTable(jsonResponse.orcamento)}
+                            {/* Seção Alimentação */}
+                            <tr>
+                                <th colSpan="2">Alimentação</th>
+                            </tr>
+                            <tr>
+                                <td>Custo Bebidas:</td>
+                                <td>{formatCurrency(jsonResponse.orcamento.alimentacao.custo_bebidas)}</td>
+                            </tr>
+                            <tr>
+                                <td>Custo Coffee Break:</td>
+                                <td>{formatCurrency(jsonResponse.orcamento.alimentacao.custo_coffee_break)}</td>
+                            </tr>
+                            <tr>
+                                <td>Detalhes:</td>
+                                <td>{jsonResponse.orcamento.alimentacao.detalhes}</td>
+                            </tr>
+
+                            {/* Seção Hospedagem */}
+                            <tr>
+                                <th colSpan="2">Hospedagem</th>
+                            </tr>
+                            <tr>
+                                <td>Custo Total Hospedagem:</td>
+                                <td>{formatCurrency(jsonResponse.orcamento.hospedagem.custo_total_hospedagem)}</td>
+                            </tr>
+                            <tr>
+                                <td>Detalhes:</td>
+                                <td>{jsonResponse.orcamento.hospedagem.detalhes}</td>
+                            </tr>
+                            <tr>
+                                <td>Hotel:</td>
+                                <td>{jsonResponse.orcamento.hospedagem.hotel}</td>
+                            </tr>
+
+                            {/* Seção Staff */}
+                            <tr>
+                                <th colSpan="2">Staff</th>
+                            </tr>
+                            <tr>
+                                <td>Custo Total Staff:</td>
+                                <td>{formatCurrency(jsonResponse.orcamento.staff.custo_total_staff)}</td>
+                            </tr>
+                            <tr>
+                                <td>Detalhes:</td>
+                                <td>{jsonResponse.orcamento.staff.detalhes}</td>
+                            </tr>
+
+                            {/* Seção Transporte */}
+                            <tr>
+                                <th colSpan="2">Transporte</th>
+                            </tr>
+                            <tr>
+                                <td>Custo Aéreo:</td>
+                                <td>{formatCurrency(jsonResponse.orcamento.transporte.custo_aereo)}</td>
+                            </tr>
+                            <tr>
+                                <td>Custo Ônibus:</td>
+                                <td>{formatCurrency(jsonResponse.orcamento.transporte.custo_onibus)}</td>
+                            </tr>
+                            <tr>
+                                <td>Detalhes:</td>
+                                <td>{jsonResponse.orcamento.transporte.detalhes}</td>
+                            </tr>
+
+                            {/* Total do Orçamento */}
+                            <tr>
+                                <th>Total Orçamento:</th>
+                                <td>{totalOrcamento}</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
             </div>
+
             <div className={styles.buttonContainerForm}>
                 <button type="button" className={`${styles.button} ${styles.adjustButton}`} onClick={handleAjustar}>
                     Ajustar
