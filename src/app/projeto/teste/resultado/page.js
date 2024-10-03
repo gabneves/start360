@@ -7,20 +7,33 @@ export default function Resultado() {
     const nomeProjeto = searchParams.get('nomeProjeto');
     const empresa = searchParams.get('empresa');
     const resposta = searchParams.get('resposta');
+    
+    // Parseia o JSON de resposta para exibir como tabela
+    const jsonResponse = JSON.parse(decodeURIComponent(resposta));
 
     const handleDownload = () => {
-        // Adicione a lógica para download aqui
         console.log("Download do planejamento");
     };
 
     const handleConcluir = () => {
-        // Adicione a lógica para concluir aqui
         console.log("Planejamento concluído");
     };
 
     const handleAjustar = () => {
-        // Adicione a lógica para ajustar aqui
         console.log("Ajustando planejamento");
+    };
+
+    // Função para renderizar o orçamento como tabela
+    const renderTable = (obj) => {
+        return Object.keys(obj).map((key) => {
+            const value = obj[key];
+            return (
+                <tr key={key}>
+                    <td><strong>{key}:</strong></td>
+                    <td>{typeof value === 'object' ? renderTable(value) : value.toString()}</td>
+                </tr>
+            );
+        });
     };
 
     return (
@@ -46,13 +59,13 @@ export default function Resultado() {
                     readOnly
                     className={styles.input}
                 />
-                <textarea
-                    name="resposta"
-                    placeholder="Resposta da API"
-                    value={resposta}
-                    readOnly
-                    className={styles.textArea}
-                />
+                <div className={styles.tableContainer}>
+                    <table className={styles.table}>
+                        <tbody>
+                            {renderTable(jsonResponse.orcamento)}
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <div className={styles.buttonContainerForm}>
                 <button type="button" className={`${styles.button} ${styles.adjustButton}`} onClick={handleAjustar}>

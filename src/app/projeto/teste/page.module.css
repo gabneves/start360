@@ -1,5 +1,5 @@
 .container {
-    padding: 20px 50px;
+    padding: 50px 100px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -20,12 +20,12 @@
     font-weight: 300;
     opacity: 0.85;
     align-self: flex-start;
-    margin-bottom: 20px; 
+    margin-bottom: 10px;
 }
 
 .gridContainer {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 20px;
     width: 100%;
     margin-bottom: 20px;
@@ -44,7 +44,7 @@
 }
 
 .input:focus {
-    border-color: #888; 
+    border-color: #888;
 }
 
 .textArea {
@@ -63,9 +63,8 @@
 
 .buttonContainerForm {
     display: flex;
-    justify-content: center; 
+    justify-content: space-between;
     width: 100%;
-    margin-top: 20px; 
 }
 
 .button {
@@ -78,8 +77,6 @@
     font-weight: 500;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    flex: 1; 
-    margin: 0 10px; 
 }
 
 .button:hover {
@@ -90,11 +87,12 @@
     transform: scale(0.98);
 }
 
+
 @media (max-width: 768px) {
     .gridContainer {
         grid-template-columns: 1fr;
     }
-
+    
     .buttonContainerForm {
         flex-direction: column;
         align-items: center;
@@ -104,35 +102,4 @@
         width: 100%;
         margin-bottom: 10px;
     }
-}
-
-.tableContainer {
-    width: 100%;
-    margin-top: 20px;
-}
-
-.table {
-    width: 100%;
-    border-collapse: collapse;
-    font-family: "Poppins", sans-serif;
-}
-
-.table th, .table td {
-    border: 1px solid #ccc;
-    padding: 10px;
-    text-align: left;
-    font-size: 16px;
-}
-
-.table th {
-    background-color: #f4f4f4;
-    font-weight: 600;
-}
-
-.table td {
-    font-weight: 400;
-}
-
-.table tr:nth-child(even) {
-    background-color: #f9f9f9;
 }
