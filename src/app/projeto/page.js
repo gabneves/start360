@@ -1,41 +1,114 @@
-import Image from "next/image";
-import styles from "./page.module.css";
-import Header from "../../components/Header/Header.js";
-import Footer from "../../components/Footer/Footer.js";
-import {
-    Button,
-    Container,
-    Grid,
-    Typography,
-} from "@mui/material";
+"use client";
+import React, { useState } from "react";
+import axios from "axios";
+import { useRouter } from 'next/navigation';
+import styles from './page.module.css';
 
-export default function Projeto() {
+export default function Teste() {
+    const [formData, setFormData] = useState({
+        nomeProjeto: "",
+        email: "",
+        telefone: "",
+        empresa: "",
+        quantParticipantes: "",
+        budget: "",
+        descricao: ""
+    });
+
+    const router = useRouter();
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.name]: e.target.value });
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const { descricao, nomeProjeto, empresa } = formData;
+        axios.post("http://127.0.0.1:5000/orcamento", { descricao })
+            .then(response => {
+                // Sucesso: Redireciona para a tela de resultados passando os dados na URL
+                router.push(`/projeto/teste/resultado?nomeProjeto=${nomeProjeto}&empresa=${empresa}&resposta=${encodeURIComponent(JSON.stringify(response.data))}`);
+
+            })
+            .catch(error => {
+                console.error("There was an error submitting the form!", error);
+            });
+    };
+
     return (
-            <Container className={styles.container} maxWidth="">
-                <Grid container spacing={0} className={styles.gridContainerLeft}>
-                    <Grid item xs={12} md={5} sx={{ mt: 6 }}>
-                        <Typography variant="h3" gutterBottom className={styles.titleLeft}>
-                        O projeto
-                        </Typography>
-                        <Typography variant="body1" paragraph className={styles.textLeft}>
-                        A Start 360 organiza um evento considerando um texto fornecido por você e algumas outras poucas informações. Com estes dados o sistema é capaz de entender as suas necessidades, estruturar o seu evento, precificar em tempo real com precisão e recomendar serviços complementares. Após os ajustes necessários um consultor entra em contato com você para validar todos os itens.
-                        </Typography>
-                        <div className={styles.buttonContainerLeft}>
-                            <Button className={styles.button} variant="contained" sx={{ mt: 3 }}>
-                                teste agora mesmo
-                            </Button>
-                        </div>
-                    </Grid>
-                    <Grid item xs={12} md={7} sx={{ mt: 6 }}>
-                        <Image className={styles.img}
-                            src="/assets/img/teamwork.png"
-                            alt="Phone mockup"
-                            width={800}
-                            height={800}
-                            layout="responsive"
-                        />
-                    </Grid>
-                </Grid>
-            </Container>
+        <form onSubmit={handleSubmit} className={styles.container}>
+            <h1 className={styles.titleLeft}>Planeje seu evento com a Start 360</h1>
+            <p className={styles.textLeft}>
+                Preencha o formulário abaixo para que a Start 360 possa criar um planejamento completo e personalizado para o seu evento corporativo. Nossa inteligência artificial cuidará de todos os detalhes, desde a logística até os orçamentos, conectando-se diretamente com os fornecedores. Eficiência, precisão e rapidez para garantir o sucesso do seu evento!
+            </p>
+            <div className={styles.gridContainer}>
+                <input
+                    type="text"
+                    name="nomeProjeto"
+                    placeholder="Nome do projeto"
+                    value={formData.nomeProjeto}
+                    onChange={handleChange}
+                    className={styles.input}
+                />
+                <input
+                    type="email"
+                    name="email"
+                    placeholder="Email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className={styles.input}
+                />
+                <input
+                    type="text"
+                    name="telefone"
+                    placeholder="Telefone"
+                    value={formData.telefone}
+                    onChange={handleChange}
+                    className={styles.input}
+                />
+                <input
+                    type="text"
+                    name="empresa"
+                    placeholder="Empresa"
+                    value={formData.empresa}
+                    onChange={handleChange}
+                    className={styles.input}
+                />
+                <input
+                    type="number"
+                    name="quantParticipantes"
+                    placeholder="Quantia de participantes"
+                    value={formData.quantParticipantes}
+                    onChange={handleChange}
+                    className={styles.input}
+                />
+                <input
+                    type="text"
+                    name="budget"
+                    placeholder="Budget previsto (opcional)"
+                    value={formData.budget}
+                    onChange={handleChange}
+                    className={styles.input}
+                />
+            </div>
+            <textarea
+                name="descricao"
+                placeholder="Descrição do projeto"
+                value={formData.descricao}
+                onChange={handleChange}
+                className={styles.textArea}
+            />
+            <div className={styles.buttonContainerForm}>
+                <button type="button" className={styles.button}>
+                    Download do modelo
+                </button>
+                <button type="button" className={styles.button}>
+                    Upload do modelo preenchido
+                </button>
+                <button type="submit" className={styles.button}>
+                    Testar
+                </button>
+            </div>
+        </form>
     );
 }
