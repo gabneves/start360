@@ -78,6 +78,7 @@
 .accordion {
     border-color: #ADADAD;
     margin-bottom: 10px;
+    border-radius: 9px;
 }
 
 .accordionSummaryIcon {

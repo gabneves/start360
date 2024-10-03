@@ -27,7 +27,7 @@ export default function Contato() {
                         </Typography>
                     </Grid>
                     <Grid item xs={12} md={5}>
-                        <Grid container spacing={2} className={styles.gridContainerForm}>
+                        <Grid container className={styles.gridContainerForm}>
                             <Grid item xs={12}>
                                 <Input type="text" fullWidth placeholder="nome" className={styles.input} />
                             </Grid>
@@ -46,5 +46,7 @@ export default function Contato() {
                     </Grid>
                 </Grid>
             </Container>
+
+
     );
 }

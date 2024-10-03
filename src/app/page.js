@@ -59,6 +59,7 @@ export default function Home() {
   };
   return (
     <>
+    <Container className={styles.container}>
       <Grid container spacing={0} className={styles.gridContainer}>
         <Grid item xs={12} md={6}>
           <Image className={styles.img}
@@ -89,6 +90,7 @@ export default function Home() {
           </div>
         </Grid>
       </Grid>
+      </Container>
 
       <Container className={styles.container}>
         <Grid container spacing={0} className={styles.gridContainerLeft}>
